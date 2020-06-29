@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下载中心</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="./src/css/demo.css">
+    <!-- @if NODE_ENV='uat' -->
+    <link rel="stylesheet"  href="https://pmdm-uat.yango.com.cn/header/head.css">
+    <!-- @endif -->
+    <!-- @if NODE_ENV='production' -->
+<!--    <link rel="stylesheet"  href="https://pmdm.yango.com.cn/header/head.css">-->
+    <!-- @endif -->
+</head>
+<body>
+<div id="header">
+    <div id="titleWord">
+        <div>下载中心</div>
+        <div></div>
+        <div>提供常用办公软件、专业管理系统客户端下载</div>
+    </div>
+</div>
+<div id="main">
+    <div id="listBox">
+        <ul id="appList">
+        </ul>
+    </div>
+    <iframe id="downloadUrl" src="https://www.baidu.com" frameborder="0"></iframe>
+</div>
+<script src="https://pmdm.yango.com.cn/yg-img/jquery.min.js" defer></script>
+<script src="src/js/demo.js" defer></script>
+<script type="application/javascript">
+    var linkArr = {}
+    if (location.host.indexOf('dev') != -1){
+        linkArr.jsLink = 'https://pmdm-uat.yango.com.cn/header/head.js?is_64_flag=true'
+    }else {
+        linkArr.jsLink =  location.origin  +'/header/head.js?is_64_flag=true'
+    }
+    var script = document.createElement("script");
+    script.id = "scriptId";
+    script.src = linkArr.jsLink;
+    script.onload = function() {
+        window.oaTitleActive("gwh");
+        var timer = setInterval(function() {
+            if (document.getElementsByClassName("hqq-menu-image1").length > 0) {
+                window.ctrlHeadOneOrTwo();
+                clearInterval(timer);
+            }
+        }, 200);
+    };
+    document.body.appendChild(script);
+    function happyNum(n) {
+        if (/(^[1-9]\d*$)/.test(n)){
+            let arr = n.split('');
+            let num = 0
+            for (let i = 0;i<arr.length;i++){
+                let m = arr[i]
+                num += m*m
+            }
+            if (num === 1){
+                
+            }
+        }
+    }
+</script>
+</body>
+</html>
